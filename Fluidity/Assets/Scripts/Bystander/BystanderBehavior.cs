@@ -2,14 +2,13 @@
 using System.Collections;
 
 public class BystanderBehavior : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	void OnDestroy(){
+		transform.parent.SendMessage("Death");
 	}
 }
