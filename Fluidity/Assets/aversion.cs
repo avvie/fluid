@@ -54,30 +54,17 @@ public class aversion : MonoBehaviour {
 
 	//DEBUGGGGGGGgggggg
 	float p2,p1;
+	Vector3 p3;
 	void OnDrawGizmos() {
 		if (dbg) {
 			if (hit != null) {
 				foreach (RaycastHit tmp in hit) {
-					Gizmos.color = Color.yellow;
-					float dist = Vector3.Cross (cam.transform.forward, tmp.point - cam.transform.position).magnitude;
-					p1 = ((Vector3.Dot (cam.transform.position, cam.transform.forward) * -2) +
-					          Mathf.Sqrt (Mathf.Pow (2 * Vector3.Dot (cam.transform.position, cam.transform.forward), 2) - 4 * Vector3.Dot (cam.transform.forward, cam.transform.forward) * (Mathf.Pow (dist, 2) - Mathf.Pow (aversionRadius, 2))))
-					          / (2 * Vector3.Dot (cam.transform.forward, cam.transform.forward));
-					p2 = ((Vector3.Dot (cam.transform.position, cam.transform.forward) * -2) -
-					          Mathf.Sqrt (Mathf.Pow (2 * Vector3.Dot (cam.transform.position, cam.transform.forward), 2) - 4 * Vector3.Dot (cam.transform.forward, cam.transform.forward) * (Mathf.Pow (dist, 2) - Mathf.Pow (aversionRadius, 2))))
-					          / (2 * Vector3.Dot (cam.transform.forward, cam.transform.forward));
+					Gizmos.color = Color.red;
+					Gizmos.DrawSphere (cam.transform.position + cam.transform.forward * tmp.distance, 2	);
 
-					Gizmos.DrawSphere (cam.transform.position + (Mathf.Abs(p1) < Mathf.Abs(p2) ? p1 : p2) * cam.transform.forward, aversionRadius);
 
 				}
 			} 
-		}
-	}
-
-	void OnGUI(){
-		if (dbg && hit != null) {
-			GUI.Label (new Rect (10, 10, 300, 20), "p1: " + p1 + "  p2:" + p2);
-			GUI.Label (new Rect (10, 25, 100, 20), (cam.transform.position + (Mathf.Abs(p1) < Mathf.Abs(p2) ? p1 : p2) * cam.transform.forward).ToString());
 		}
 	}
 }

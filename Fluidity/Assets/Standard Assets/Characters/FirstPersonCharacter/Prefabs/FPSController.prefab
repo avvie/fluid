@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 8100000}
   - component: {fileID: 12474086}
   - component: {fileID: 114000013219116270}
+  - component: {fileID: 114234528857453194}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -358,13 +359,31 @@ MonoBehaviour:
   heightDensity: 0.18
   startDistance: 40
   fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
+--- !u!114 &114234528857453194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8c9707ae8f7f54eacafcae8d185225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedOfAversion: 1
+  timeToAversion: 1
+  aversionTag: Store
+  aversionDistance: 8
+  aversionRadius: 2
+  layerName: AversionLayer
+  dbg: 1
 --- !u!114 &114385489961256432
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab8c9707ae8f7f54eacafcae8d185225, type: 3}
   m_Name: 
