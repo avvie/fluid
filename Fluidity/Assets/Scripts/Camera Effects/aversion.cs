@@ -21,7 +21,9 @@ public class aversion : MonoBehaviour {
 	[Tooltip("Layere Name, not required")]
 	public string layerName= "AversionLayer";
 	[Tooltip("Show Debug info")]
-	public bool dbg= false, DoXRot = false;
+	public bool dbg= false;
+	[Tooltip("Enables the rotation on the Camera X-axis")]
+	public bool DoXRot = false;
 
 	private UnityStandardAssets.Characters.FirstPerson.FirstPersonController target;
 	private bool msgSent = false;
@@ -103,7 +105,7 @@ public class aversion : MonoBehaviour {
 				msgSent = false;
 			}
 			if(timer >= 0)
-				timer -= Time.deltaTime;
+				timer -= 1.3f * Time.deltaTime; //faster reset 
 			hit = null;
 		}
 		//Debug.Log (timer);
@@ -127,5 +129,5 @@ public class aversion : MonoBehaviour {
 		GUI.Label(new Rect(10, 35, 300, 20), "rotY:" + roty.ToString());
 		GUI.Label(new Rect(10, 55, 300, 20), "rotY:" + transform.up.ToString());
 	}
-	/*
+	*/
 }
