@@ -28,6 +28,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+		public static FirstPersonController INSTANCE;
+		private bool rotationLock = false;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -43,6 +45,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
 
 		private void Awake(){
+			if (INSTANCE == null)
+				INSTANCE = this;
+			else
+				Destroy (this);
+
 			m_CharacterController = GetComponent<CharacterController>();
 			m_Camera = Camera.main;
 			m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -52,19 +59,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_NextStep = m_StepCycle/2f;
 			m_Jumping = false;
 			m_AudioSource = GetComponent<AudioSource>();
+			m_MouseLook.Init(transform , m_Camera.transform);
 		}
         // Use this for initialization
         private void Start()
         {
-			
+			m_CharacterController = GetComponent<CharacterController>();
+			m_Camera = Camera.main;
+			m_OriginalCameraPosition = m_Camera.transform.localPosition;
+			m_FovKick.Setup(m_Camera);
+			m_HeadBob.Setup(m_Camera, m_StepInterval);
+			m_StepCycle = 0f;
+			m_NextStep = m_StepCycle/2f;
+			m_Jumping = false;
+			m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
         }
 
 
         // Update is called once per frame
         private void Update()
         {
-            RotateView();
+			if (!rotationLock) {
+				RotateView ();
+			} else {
+				m_Camera = Camera.main;
+			}
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
             {
@@ -246,6 +267,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MouseLook.LookRotation (transform, m_Camera.transform);
         }
 
+		public void setRotationLock(bool temp){
+			rotationLock = temp;
+			Debug.Log ("message Receiived: " + temp);
+		}
+
+		public void UpdateRotas(Transform[] cam){
+			m_MouseLook.Init (cam[0], cam[1]);
+		}
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {

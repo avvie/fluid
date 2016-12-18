@@ -10,9 +10,9 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 14300000}
   - component: {fileID: 11400000}
+  - component: {fileID: 114385489961256432}
   - component: {fileID: 5400000}
   - component: {fileID: 8200000}
-  - component: {fileID: 114385489961256432}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -32,7 +32,6 @@ GameObject:
   - component: {fileID: 8100000}
   - component: {fileID: 12474086}
   - component: {fileID: 114000013219116270}
-  - component: {fileID: 114234528857453194}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -224,12 +223,12 @@ MonoBehaviour:
   m_MouseLook:
     XSensitivity: 2
     YSensitivity: 2
-    clampVerticalRotation: 0
-    MinimumX: -90
-    MaximumX: 90
+    clampVerticalRotation: 1
+    MinimumX: -80
+    MaximumX: 80
     smooth: 0
-    smoothTime: 5
-    lockCursor: 1
+    smoothTime: 4
+    lockCursor: 0
   m_UseFovKick: 1
   m_FovKick:
     Camera: {fileID: 0}
@@ -270,7 +269,7 @@ MonoBehaviour:
         tangentMode: 0
       - serializedVersion: 2
         time: 0.5
-        value: 1
+        value: 1.1375
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -282,7 +281,7 @@ MonoBehaviour:
         tangentMode: 0
       - serializedVersion: 2
         time: 1.5
-        value: -1
+        value: -1.1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -294,7 +293,7 @@ MonoBehaviour:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
+      m_RotationOrder: 0
     VerticaltoHorizontalRatio: 2
   m_JumpBob:
     BobDuration: 0.2
@@ -359,39 +358,22 @@ MonoBehaviour:
   heightDensity: 0.18
   startDistance: 40
   fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
---- !u!114 &114234528857453194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8c9707ae8f7f54eacafcae8d185225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedOfAversion: 1
-  timeToAversion: 1
-  aversionTag: Store
-  aversionDistance: 8
-  aversionRadius: 2
-  layerName: AversionLayer
-  dbg: 1
 --- !u!114 &114385489961256432
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab8c9707ae8f7f54eacafcae8d185225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedOfAversion: 1
+  speedOfAversion: 5
   timeToAversion: 1
   aversionTag: Store
-  aversionDistance: 8
+  aversionDistance: 12
   aversionRadius: 2
   layerName: AversionLayer
   dbg: 1
+  DoXRot: 0
